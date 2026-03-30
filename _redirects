@@ -1,0 +1,13 @@
+# Redirect 301 - Migrazione opere-autori
+# Museo Galleria del Premio Suzzara
+
+# Redirect singoli artisti (pattern matching)
+/opere-autori/* /collezione/artisti/:splat 301
+
+# Redirect index opere-autori  
+/opere-autori /collezione/artisti/ 301
+
+# Esempi di redirect gestiti automaticamente:
+# /opere-autori/guttuso-renato,244.html → /collezione/artisti/guttuso-renato
+# /opere-autori/zigaina-giuseppe,509.html → /collezione/artisti/zigaina-giuseppe
+# /opere-autori/birolli-renato,68.html → /collezione/artisti/birolli-renato

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Galleria del Premio | Museo Galleria del Premio Suzzara</title>
+    <meta name="description" content="Storia e collezione del Museo Galleria del Premio Suzzara, oltre 800 opere dal 1948 ad oggi">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200;300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red-primary: #E30513;
+            --black: #1D1D1B;
+            --grey-dark: #666666;
+            --grey-medium: #E0E0E0;
+            --grey-light: #FAFAFA;
+            --white: #FFFFFF;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--grey-medium);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-top {
+            position: relative;
+            padding: 20px 60px;
+            border-bottom: 1px solid var(--grey-light);
+        }
+        .logo-link {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--black);
+            text-decoration: none;
+        }
+        nav {
+            background: var(--white);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            padding: 20px 15px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        nav a:hover, nav a.active {
+            color: var(--red-primary);
+            background: var(--grey-light);
+        }
+        .page-header {
+            background: var(--black);
+            color: var(--white);
+            padding: 80px 60px 60px;
+            border-bottom: 3px solid var(--red-primary);
+        }
+        .page-header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 20px;
+        }
+        .breadcrumb a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--red-primary);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        .page-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+        }
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+            max-width: 900px;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 60px;
+        }
+        .content-section {
+            margin-bottom: 80px;
+        }
+        .content-section h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--black);
+        }
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--grey-dark);
+            margin-bottom: 20px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--grey-light);
+            border-top: 4px solid var(--red-primary);
+        }
+        .stat-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--red-primary);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .stat-label {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--grey-dark);
+        }
+        .highlight-box {
+            background: var(--black);
+            color: var(--white);
+            padding: 60px;
+            margin: 80px 0;
+            text-align: center;
+        }
+        .highlight-box h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        .highlight-box p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--red-primary);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: var(--black);
+            outline: 2px solid var(--red-primary);
+        }
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 60px 60px 30px;
+            margin-top: 100px;
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .footer-content p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            margin: 10px 0;
+        }
+        @media (max-width: 968px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            .container {
+                padding: 50px 30px;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    
+        
+
+        @media (max-width: 968px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+                z-index: 1000;
+                padding-top: 80px;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            nav a {
+                padding: 15px 20px;
+                border-bottom: 1px solid var(--grey-light);
+            }
+
+            .menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 999;
+            }
+
+            .menu-overlay.active {
+                display: block;
+            }
+        }
+    
+        /* Mobile Menu - Simple Vertical Stack */
+        @media (max-width: 968px) {
+            .header-top {
+                padding: 15px 30px;
+            }
+            
+            .logo-svg {
+                height: 40px;
+            }
+            
+            nav {
+                border-top: 1px solid var(--grey-medium);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 0;
+            }
+            
+            nav > ul > li {
+                border-bottom: 1px solid var(--grey-light);
+            }
+            
+            nav a {
+                padding: 14px 30px;
+                font-size: 0.8rem;
+            }
+            
+            nav > ul > li > a:hover {
+                background: var(--grey-light);
+            }
+            
+            /* Dropdown nascosto su mobile */
+            .dropdown-content {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="../" class="logo-link">Museo Galleria del Premio Suzzara</a>
+            
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../museo/" class="active">Museo</a></li>
+                <li><a href="../premio/">Premio</a></li>
+                <li><a href="#">Collezione</a></li>
+                <li><a href="../mostre/">Mostre</a></li>
+                <li><a href="../eventi/">Eventi</a></li>
+                <li><a href="../edizionidelpremio/">Edizioni</a></li>
+                <li><a href="../visita/">Visita</a></li>
+                <li><a href="../didattica/">Didattica</a></li>
+                <li><a href="../contatti/">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <div class="page-header-content">
+            <div class="breadcrumb">
+                <a href="../">Home</a>
+                <span>/</span>
+                <a href="../museo/">Museo</a>
+                <span>/</span>
+                <span>La Galleria del Premio</span>
+            </div>
+            <h1 class="page-title">La Galleria del Premio</h1>
+            <p class="page-subtitle">Dal 1948, una collezione unica di arte italiana contemporanea che racconta l'evoluzione del linguaggio artistico dal neorealismo ad oggi</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Storia -->
+        <div class="content-section">
+            <h2>La Storia</h2>
+            <p>
+                Il Museo Galleria del Premio Suzzara nasce nel 2002 come naturale evoluzione di una storia iniziata nel 1948 con il Premio Suzzara, uno dei più longevi e significativi premi d'arte contemporanea in Italia.
+            </p>
+            <p>
+                Il Premio, fortemente voluto dal sindaco Tebe Mignoni e ideato da Dino Villani con il contributo di Cesare Zavattini, nacque da un'idea rivoluzionaria: mettere sullo stesso piano i prodotti del lavoro artistico e quelli del lavoro contadino e operaio. I vincitori ricevevano infatti premi messi a disposizione dalle floride realtà produttive del territorio: vitelli, maiali, cucine economiche, prodotti della terra.
+            </p>
+            <p>
+                Le opere premiate rimanevano di proprietà del Comune, che le conservava nella prospettiva di una Galleria dedicata al lavoro. Questo principio ha permesso di costituire, nel corso di 75 anni, un patrimonio artistico di straordinario valore che oggi conta oltre 800 opere.
+            </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">1948</div>
+                <div class="stat-label">Anno Fondazione</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">53</div>
+                <div class="stat-label">Edizioni Premio</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">800+</div>
+                <div class="stat-label">Opere Collezione</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">75</div>
+                <div class="stat-label">Anni di Storia</div>
+            </div>
+        </div>
+
+        <!-- Collezione -->
+        <div class="content-section">
+            <h2>La Collezione</h2>
+            <p>
+                La collezione del museo offre al pubblico un patrimonio di oltre ottocento opere acquisite nel corso di una storia iniziata nell'immediato dopoguerra, testimoniando l'evoluzione dell'arte italiana contemporanea dal neorealismo ad oggi.
+            </p>
+            <p>
+                Tra gli autori presenti in collezione ricordiamo: Renato Guttuso, Armando Pizzinato, Giuseppe Zigaina, Renato Birolli, Aligi Sassu, Domenico Cantatore, Giulio Turcato, Franco Francese, Bepi Romagnoni, Titina Maselli, e successivamente Mauro Staccioli, Nicola Carrino, Giosetta Fioroni, Concetto Pozzati, Gianfranco Pardi, Gianni Colombo.
+            </p>
+            <p>
+                La collezione riflette i termini della questione realista nell'Italia tra gli anni Quaranta e Cinquanta: all'idea di "un'arte comprensibile e umana" si collegava il vecchio concetto di realismo come arte democratica, elaborato da Gustave Courbet un secolo prima.
+            </p>
+        </div>
+
+        <!-- CTA Box -->
+        <div class="highlight-box">
+            <h3>Esplora la Collezione</h3>
+            <p>Scopri gli artisti e le opere che hanno fatto la storia del Premio Suzzara</p>
+            <a href="../collezione/artisti/" class="btn">Vedi gli Artisti →</a>
+        </div>
+
+        <!-- Sede -->
+        <div class="content-section">
+            <h2>La Sede</h2>
+            <p>
+                Il museo ha sede in Via Don Bosco 2/a, nel centro storico di Suzzara. Gli spazi espositivi si articolano su più sale che ospitano sia la collezione permanente che le mostre temporanee.
+            </p>
+            <p>
+                Il museo non è solo uno spazio espositivo, ma un centro culturale attivo che organizza mostre, convegni, pubblicazioni e attività didattiche rivolte a scuole e famiglie, mantenendo vivo il dialogo tra arte, lavoro e società che ha caratterizzato il Premio fin dalle origini.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>Museo Galleria del Premio Suzzara</strong></p>
+            <p>Via Don Bosco 2/a - 46029 Suzzara (MN)</p>
+            <p>Tel. 0376 513513 | Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="84e3e5e8e8e1f6ede5f4f6e1e9edebc4e7ebe9f1eae1aaf7f1fefee5f6e5aae9eaaaedf0">[email&#160;protected]</a></p>
+            <p style="margi

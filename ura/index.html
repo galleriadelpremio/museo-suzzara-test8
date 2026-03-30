@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ufficio di Revisione Antropica | Museo Galleria del Premio Suzzara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200;300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red-primary: #E30513;
+            --black: #1D1D1B;
+            --grey-dark: #666666;
+            --grey-medium: #E0E0E0;
+            --grey-light: #FAFAFA;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        /* Header - Same as other pages */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--grey-medium);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            position: relative;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--grey-light);
+        }
+
+        .logo-svg {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav > ul > li {
+            position: relative;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            padding: 20px 20px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        nav > ul > li > a:hover,
+        nav > ul > li > a.active {
+            color: var(--red-primary);
+            background: var(--grey-light);
+        }
+
+        /* Hero Section */
+        .hero-ura {
+            background: var(--black);
+            color: var(--white);
+            padding: 100px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-ura::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('[IMMAGINE-BACKGROUND]') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--red-primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .hero-meta {
+            font-size: 1rem;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 30px;
+            margin-top: 40px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 60px;
+        }
+
+        /* Intro Section */
+        .intro-section {
+            max-width: 900px;
+            margin: 0 auto 80px;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--black);
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--grey-dark);
+            margin-bottom: 20px;
+        }
+
+        /* Logo CM Section */
+        .logo-cm-section {
+            background: var(--grey-light);
+            padding: 80px 60px;
+            margin: 80px 0;
+        }
+
+        .logo-cm-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .logo-cm-text h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--black);
+        }
+
+        .logo-cm-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--grey-dark);
+        }
+
+        .logo-cm-image {
+            text-align: center;
+            padding: 40px;
+            background: var(--white);
+            border-radius: 8px;
+        }
+
+        .logo-cm-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Credits Section */
+        .credits-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 60px;
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        .credits-section h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            opacity: 0.7;
+        }
+
+        .artists {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .collaborators {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .collaborators-list {
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+
+        /* Sections Grid */
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 80px 0;
+        }
+
+        .section-card {
+            background: var(--white);
+            border: 2px solid var(--grey-medium);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--black);
+            display: block;
+        }
+
+        .section-card:hover {
+            border-color: var(--red-primary);
+            box-shadow: 0 10px 40px rgba(227, 5, 19, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .section-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .section-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+
+        .section-card p {
+            font-size: 0.95rem;
+            color: var(--grey-dark);
+            line-height: 1.6;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: var(--grey-light);
+            border-left: 6px solid var(--red-primary);
+            padding: 40px 50px;
+            margin: 60px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--grey-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 60px 60px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--red-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 50px 30px;
+            }
+
+            .logo-cm-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+        }
+    
+        
+
+        @media (max-width: 968px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+                z-index: 1000;
+                padding-top: 80px;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            nav a {
+                padding: 15px 20px;
+                border-bottom: 1px solid var(--grey-light);
+            }
+
+            .menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 999;
+            }
+
+            .menu-overlay.active {
+                display: block;
+            }
+        }
+    
+        /* Mobile Menu - Simple Vertical Stack */
+        @media (max-width: 968px) {
+            .header-top {
+                padding: 15px 30px;
+            }
+            
+            .logo-svg {
+                height: 40px;
+            }
+            
+            nav {
+                border-top: 1px solid var(--grey-medium);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 0;
+            }
+            
+            nav > ul > li {
+                border-bottom: 1px solid var(--grey-light);
+            }
+            
+            nav a {
+                padding: 14px 30px;
+                font-size: 0.8rem;
+            }
+            
+            nav > ul > li > a:hover {
+                background: var(--grey-light);
+            }
+            
+            /* Dropdown nascosto su mobile */
+            .dropdown-content {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <a href="../../">
+                <svg class="logo-svg" viewBox="0 0 521 265" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Logo SVG content here -->
+                </svg>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="../../museo/">Museo</a>
+                    <div class="dropdown-content">
+                        <a href="../../museo/galleria-premio.html">Galleria del Premio</a>
+                        <a href="../../museo/staff.html">Staff</a>
+                        <a href="../../museo/amministrazione-trasparente.html">Amm. Trasparente</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="../../premio/" class="active">Premio</a>
+                    <div class="dropdown-content">
+                        <a href="../../premio/in-corso.html">In Corso</a>
+                        <a href="../../premio/archivio.html">Archivio</a>
+                        <a href="../../premio/archeologia/">Archeologia</a>
+                    </div>
+                </li>
+                <li><a href="#">Collezione</a></li>
+                <li class="dropdown">
+                    <a href="../../mostre/">Mostre</a>
+                    <div class="dropdown-content">
+                        <a href="../../mostre/in-corso.html">In Corso</a>
+                        <a href="../../mostre/archivio.html">Archivio</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="../../eventi/">Eventi</a>
+                    <div class="dropdown-content">
+                        <a href="../../eventi/in-corso.html">In Corso</a>
+                        <a href="../../eventi/archivio.html">Archivio</a>
+                    </div>
+                </li>
+                <li><a href="../../edizionidelpremio/">Edizioni del Premio</a></li>
+                <li><a href="../../visita/">Visita</a></li>
+                <li><a href="../../didattica/">Didattica</a></li>
+                <li><a href="../../esponi/">Esponi con noi</a></li>
+                <li><a href="../../contatti/">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero-ura">
+        <div class="hero-content">
+            <div style="font-size: 0.8rem; margin-bottom: 20px; opacity: 0.6;">
+                <a href="../../" style="color: rgba(255,255,255,0.6); text-decoration: none;">Home</a>
+                <span style="margin: 0 8px;">/</span>
+                <a href="../../premio/" style="color: rgba(255,255,255,0.6); text-decoration: none;">Premio</a>
+                <span style="margin: 0 8px;">/</span>
+                <a href="../../premio/archeologia/" style="color: rgba(255,255,255,0.6); text-decoration: none;">Archeologia</a>
+                <span style="margin: 0 8px;">/</span>
+                <span style="color: rgba(255,255,255,0.8);">URA</span>
+            </div>
+            <div class="hero-subtitle">Progetto Artistico 47° Premio Suzzara</div>
+            <h1 class="hero-title">Ufficio di Revisione Antropica</h1>
+            <p class="hero-description">
+                Un'indagine sulla percezione del Premio Suzzara, delle sue ragioni, della sua storia e della sua identità nel territorio suzzarese
+            </p>
+            <div class="hero-meta">
+                Casamatta • 47ª Edizione Premio Suzzara • Settembre-Ottobre 2011
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Intro Section -->
+        <div class="intro-section">
+            <h2>Il Progetto</h2>
+            <p>
+                "Ufficio di Revisione Antropica (indagine sul Premio Suzzara)" è un'opera dedicata alla percezione del Premio, delle sue ragioni, della sua storia e della sua identità nel territorio suzzarese.
+            </p>
+            <p>
+                È stata realizzata da <strong>Umberto Cavenago</strong> e <strong>Giancarlo Norese</strong> in occasione della loro partecipazione a <strong>CASAMATTA</strong>, la 47ª edizione del Premio Suzzara, a cura di Emma Zanella e Alessandro Castiglioni.
+            </p>
+            <p>
+                Questo sito fa parte integrante del progetto, unitamente a ricerche nell'archivio della Galleria del Premio, video interviste, fotografie, ritrovamenti di libri, documentari, manoscritti, testimonianze e materiali vari.
+            </p>
+        </div>
+
+        <!-- Quote Box -->
+        <div class="quote-box">
+            "Proprio da questa indagine territoriale deriva l'idea di progettare il logo CM (Casamatta) andando a modificare lo storico marchio industriale delle Officine Meccaniche."
+        </div>
+    </div>
+
+    <!-- Logo CM Section -->
+    <div class="logo-cm-section">
+        <div class="logo-cm-content">
+            <div class="logo-cm-text">
+                <h3>Dal Marchio OM al Logo CM</h3>
+                <p>
+                    Il progetto ha reinterpretato il marchio storico delle Officine Meccaniche di Suzzara, trasformandolo nel logo di Casamatta. Un ponte tra la memoria industriale del territorio e la contemporaneità artistica del Premio.
+                </p>
+                <p style="margin-top: 20px;">
+                    Questa trasformazione simboleggia il dialogo continuo tra passato e presente che caratterizza il Premio Suzzara fin dalle sue origini.
+                </p>
+            </div>
+            <div class="logo-cm-image">
+                <!-- Qui inserire l'immagine del logo Casamatta -->
+                <div style="background: var(--grey-light); padding: 60px; border-radius: 8px;">
+                    <div style="font-size: 4rem; color: var(--red-primary);">CM</div>
+                    <p style="margin-top: 20px; font-size: 0.9rem; color: var(--grey-dark);">Logo Casamatta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credits Section -->
+    <div class="credits-section">
+        <h3>Artisti</h3>
+        <div class="artists">
+            Umberto Cavenago<br>
+            Giancarlo Norese
+        </div>
+        <div class="collaborators">con la collaborazione di</div>
+        <div class="collaborators-list">
+            Ben Mangone • Anastasia Righi • Paolo Tognozzi
+        </div>
+    </div>
+
+    <!-- Sections Grid -->
+    <div class="container">
+        <h2 style="font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 600; text-align: center; margin-bottom: 50px;">
+            Esplora il Progetto
+        </h2>
+        
+        <div class="sections-grid">
+            <a href="fotocronaca.html" class="section-card">
+                <div class="section-icon">📸</div>
+                <h3>Fotocronaca</h3>
+                <p>Documentazione fotografica dell'indagine sul territorio</p>
+            </a>
+
+            <a href="gli-anni-del-vitello.html" class="section-card">
+                <div class="section-icon">🐄</div>
+                <h3>Gli Anni del Vitello</h3>
+                <p>Il periodo storico in cui il Premio nasceva da un vitello</p>
+            </a>
+
+            <a href="1948-1955.html" class="section-card">
+                <div class="section-icon">📅</div>
+                <h3>1948-1955</h3>
+                <p>Le prime edizioni del Premio Suzzara</p>
+            </a>
+
+            <a href="arte-truffa.html" class="section-card">
+                <div class="section-icon">🎭</div>
+                <h3>Arte Truffa</h3>
+                <p>Controversie e dibattiti intorno al Premio</p>
+            </a>
+
+            <a href="svezia.html" class="section-card">
+                <div class="section-icon">🇸🇪</div>
+                <h3>Svezia</h3>
+                <p>Materiali ritrovati nell'archivio della Galleria</p>
+            </a>
+
+            <a href="il-conservatore.html" class="section-card">
+                <div class="section-icon">👤</div>
+                <h3>Il Conservatore</h3>
+                <p>Testimonianze e memorie della Galleria</p>
+            </a>
+
+            <a href="genius-loci.html" class="section-card">
+                <div class="section-icon">🏛️</div>
+                <h3>Genius Loci</h3>
+                <p>Lo spirito del luogo e l'identità territoriale</p>
+            </a>
+
+            <a href="guido.html" class="section-card">
+                <div class="section-icon">📖</div>
+                <h3>Guido</h3>
+                <p>Storie e personaggi del Premio</p>
+            </a>
+
+            <a href="documenti-ritrovati.html" class="section-card">
+                <div class="section-icon">📜</div>
+                <h3>Documenti Ritrovati</h3>
+                <p>Materiali d'archivio recuperati durante la ricerca</p>
+            </a>
+
+            <a href="om-cm.html" class="section-card">
+                <div class="section-icon">⚙️</div>
+                <h3>OM - CM</h3>
+                <p>Dalla fabbrica all'arte: il logo reinterpretato</p>
+            </a>
+
+            <a href="gianni-colombo.html" class="section-card">
+                <div class="section-icon">🎨</div>
+                <h3>Gianni Colombo</h3>
+                <p>Approfondimento su un protagonista del Premio</p>
+            </a>
+
+            <a href="mi-trovo-bene-qui.html" class="section-card">
+                <div class="section-icon">💬</div>
+                <h3>Mi Trovo Bene Qui</h3>
+                <p>Testimonianze dal territorio suzzarese</p>
+            </a>
+
+            <a href="premi-veri.html" class="section-card">
+                <div class="section-icon">🏆</div>
+                <h3>Premi Veri</h3>
+                <p>La natura e il valore dei riconoscimenti del Premio</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Museo Galleria del Premio Suzzara</h3>
+                <p>
+                    Il Museo Galleria del Premio Suzzara offre al pubblico un patrimonio di oltre ottocento opere acquisite nel corso di una storia iniziata nell'immediato dopoguerra, testimoniando l'evoluzione dell'arte italiana contemporanea dal neorealismo ad oggi.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Il Museo</h3>
+                <ul class="footer-links">
+                    <li><a href="../museo/galleria-premio.html">Galleria del Premio</a></li>
+                    <li><a href="../museo/staff.html">Staff</a></li>
+                    <li><a href="#">La Collezione</a></li>
+                    <li><a href="../edizionidelpremio/">Pubblicazioni</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Il Premio</h3>
+                <ul class="footer-links">
+                    <li><a href="../premio/">Cos'è il Premio</a></li>
+                    <li><a href="../premio/in-corso.html">Edizione corrente</a></li>
+                    <li><a href="../premio/archivio.html">Archivio edizioni</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Progetti Speciali</h3>
+                <ul class="footer-links">
+                    <li><a href="../ura/">Ufficio di Revisione Antropica</a></li>
+                    <li><a href="../visita/">Orari e biglietti</a></li>
+                    <li><a href="../didattica/">Attività didattiche</a></li>
+                    <li><a href="../contatti/">Contatti</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Museo Galleria del Premio Suzzara | Via Don Bosco 2/a - 46029 Suzzara (MN) | Tel. 0376 513513</p>
+        </div>
+    </footer>
+    
+
+    <script>
+        </script>
+</body>
+</html>

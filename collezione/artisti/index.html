@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisti | Collezione Museo Galleria Premio Suzzara</title>
+    <meta name="description" content="Esplora i 477 artisti della collezione del Museo Galleria del Premio Suzzara">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200;300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red-primary: #E30513;
+            --black: #1D1D1B;
+            --grey-dark: #666666;
+            --grey-medium: #E0E0E0;
+            --grey-light: #FAFAFA;
+            --white: #FFFFFF;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--grey-medium);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-top {
+            padding: 20px 60px;
+            border-bottom: 1px solid var(--grey-light);
+        }
+        .logo-link {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--black);
+            text-decoration: none;
+        }
+        nav {
+            background: var(--white);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            padding: 20px 15px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        nav a:hover, nav a.active {
+            color: var(--red-primary);
+            background: var(--grey-light);
+        }
+        .page-header {
+            background: var(--black);
+            color: var(--white);
+            padding: 80px 60px 60px;
+            border-bottom: 3px solid var(--red-primary);
+        }
+        .page-header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 20px;
+        }
+        .breadcrumb a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--red-primary);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        .page-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+        }
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px;
+        }
+        .letter-section {
+            margin-bottom: 60px;
+        }
+        .letter-heading {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--red-primary);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--grey-medium);
+        }
+        .artists-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .artists-list li {
+            padding: 15px 20px;
+            background: var(--grey-light);
+            border-left: 3px solid var(--grey-medium);
+            transition: all 0.3s ease;
+        }
+        .artists-list li:hover {
+            background: var(--white);
+            border-left-color: var(--red-primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .artists-list a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        .artists-list a:hover {
+            color: var(--red-primary);
+        }
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 60px 60px 30px;
+            margin-top: 100px;
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .footer-content p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            margin: 10px 0;
+        }
+        @media (max-width: 968px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            .container {
+                padding: 50px 30px;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            .artists-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--black);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        @media (max-width: 968px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+                z-index: 1000;
+                padding-top: 80px;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            nav a {
+                padding: 15px 20px;
+                border-bottom: 1px solid var(--grey-light);
+            }
+
+            .menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 999;
+            }
+
+            .menu-overlay.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="../" class="logo-link">Museo Galleria del Premio Suzzara</a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../museo/">Museo</a></li>
+                <li><a href="../premio/">Premio</a></li>
+                <li><a href="../collezione/" class="active">Collezione</a></li>
+                <li><a href="../mostre/">Mostre</a></li>
+                <li><a href="../eventi/">Eventi</a></li>
+                <li><a href="../edizionidelpremio/">Edizioni</a></li>
+                <li><a href="../visita/">Visita</a></li>
+                <li><a href="../didattica/">Didattica</a></li>
+                <li><a href="../contatti/">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <div class="page-header-content">
+            <div class="breadcrumb">
+                <a href="../">Home</a>
+                <span>/</span>
+                <a href="../collezione/">Collezione</a>
+                <span>/</span>
+                <span>Artisti</span>
+            </div>
+            <h1 class="page-title">Artisti</h1>
+            <p class="page-subtitle">477 artisti nella collezione del museo</p>
+        </div>
+    </div>
+
+    <div class="container">
+                <div class="letter-section">
+            <h2 class="letter-heading">A</h2>
+            <ul class="artists-list">
+                <li><a href="alfieri-attilio.html">Alfieri Attilio</a></li>
+                <li><a href="avanzolini-adriano.html">Avanzolini Adriano</a></li>
+                <li><a href="baldinelli-armando.html">Baldinelli Armando</a></li>
+                <li><a href="bergonzoni-aldo.html">Bergonzoni Aldo</a></li>
+                <li><a href="bisi-azio.html">Bisi Azio</a></li>
+                <li><a href="borgonzoni-aldo.html">Borgonzoni Aldo</a></li>
+                <li><a href="brizzi-aldo.html">Brizzi Aldo</a></li>
+                <li><a href="cabiati-achille.html">Cabiati Achille</a></li>
+                <li><a href="caminati-aurelio.html">Caminati Aurelio</a></li>
+                <li><a href="cardona-torrandell-armando.html">Cardona-Torrandell Armando</a></li>
+                <li><a href="casciello-angelo.html">Casciello Angelo</a></li>
+                <li><a href="caselli-antonio.html">Caselli Antonio</a></li>
+                <li><a href="catelani-antonio.html">Catelani Antonio</a></li>
+                <li><a href="cavaliere-alik.html">Cavaliere Alik</a></li>
+                <li><a href="cavallari-alberto.html">Cavallari Alberto</a></li>
+                <li><a href="ceccarelli-aurelio.html">Ceccarelli Aurelio</a></li>
+                <li><a href="checchi-arturo.html">Checchi Arturo</a></li>
+                <li><a href="chiesi-andrea.html">Chiesi Andrea</a></li>
+                <li><a href="corno-alex.html">Corno Alex</a></li>
+                <li><a href="di-giambattista-alessandro.html">Di Giambattista Alessandro</a></li>
+                <li><a href="dreoni-arrigo.html">Dreoni Arrigo</a></li>
+                <li><a href="esposito-arcangelo.html">Esposito Arcangelo</a></li>
+                <li><a href="fabbri-agenore.html">Fabbri Agenore</a></li>
+                <li><a href="ferreri-angelo.html">Ferreri Angelo</a></li>
+                <li><a href="forgioli-attilio.html">Forgioli Attilio</a></li>
+                <li><a href="frohner-adolf.html">Frohner Adolf</a></li>
+                <li><a href="gambaro-maria-antonietta.html">Gambaro Maria Antonietta</a></li>
+                <li><a href="grazzi-aldo.html">Grazzi Aldo</a></li>
+                <li><a href="gui-alessandro.html">Gui Alessandro</a></li>
+                <li><a href="ievolella-antonio.html">Ievolella Antonio</a></li>
+                <li><a href="ligabue-antonio.html">Ligabue Antonio</a></li>
+                <li><a href="longoni-alberto.html">Longoni Alberto</a></li>
+                <li><a href="manfredi-alberto.html">Manfredi Alberto</a></li>
+                <li><a href="mantica-alfredo.html">Mantica Alfredo</a></li>
+                <li><a href="margotti-anacleto.html">Margotti Anacleto</a></li>
+                <li><a href="martinelli-andrea.html">Martinelli Andrea</a></li>
+                <li><a href="morandi-albano.html">Morandi Albano</a></li>
+                <li><a href="morena-alberico.html">Morena Alberico</a></li>
+                <li><a href="mozzali-andrea.html">Mozzali Andrea</a></li>
+                <li><a href="murer-augusto.html">Murer Augusto</a></li>
+                <li><a href="naciarriti-andrea.html">Naciarriti Andrea</a></li>
+                <li><a href="natili-aldo.html">Natili Aldo</a></li>
+                <li><a href="nobile-alberto.html">Nobile Alberto</a></li>
+                <li><a href="nordera-aurelio.html">Nordera Aurelio</a></li>
+                <li><a href="occhipinti-alvaro.html">Occhipinti Alvaro</a></li>
+                <li><a href="pisani-agostino.html">Pisani Agostino</a></li>
+                <li><a href="pizzinato-armando.html">Pizzinato Armando</a></li>
+                <li><a href="platone-amelia.html">Platone Amelia</a></li>
+                <li><a href="ramponi-maria-antonietta.html">Ramponi Maria Antonietta</a></li>
+                <li><a href="risi-angelomichele.html">Risi Angelomichele</a></li>
+                <li><a href="rosa-alice.html">Rosa Alice</a></li>
+                <li><a href="rossi-attilio.html">Rossi Attilio</a></li>
+                <li><a href="ruberti-ada.html">Ruberti Ada</a></li>
+                <li><a href="salvatore-anna.html">Salvatore Anna</a></li>
+                <li><a href="sassu-aligi.html">Sassu Aligi</a></li>
+                <li><a href="scaccaglia-arnaldo.html">Scaccaglia Arnaldo</a></li>
+                <li><a href="scivales-armando.html">Scivales Armando</a></li>
+                <li><a href="scordia-antonio.html">Scordia Antonio</a></li>
+                <li><a href="seguri-albano.html">Seguri Albano</a></li>
+                <li><a href="sughi-alberto.html">Sughi Alberto</a></li>
+                <li><a href="tettamanti-ampelio.html">Tettamanti Ampelio</a></li>
+                <li><a href="titonel-angelo.html">Titonel Angelo</a></li>
+                <li><a href="vitali-alberto.html">Vitali Alberto</a></li>
+                <li><a href="zancanaro-antonio.html">Zancanaro Antonio</a></li>
+                <li><a href="zanon-marisaldi-ada.html">Zanon Marisaldi Ada</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">B</h2>
+            <ul class="artists-list">
+                <li><a href="canova-bruno.html">Canova Bruno</a></li>
+                <li><a href="fanesi-bruno.html">Fanesi Bruno</a></li>
+                <li><a href="khanous-brahim.html">Khanous Brahim</a></li>
+                <li><a href="pasquali-beatrice.html">Pasquali Beatrice</a></li>
+                <li><a href="pulga-bruno.html">Pulga Bruno</a></li>
+                <li><a href="romagnoni-bepi.html">Romagnoni Bepi</a></li>
+                <li><a href="rovesti-bruno.html">Rovesti Bruno</a></li>
+                <li><a href="stettner-bela.html">Stettner Bela</a></li>
+                <li><a href="turchetto-benito.html">Turchetto Benito</a></li>
+                <li><a href="zoni-bruno.html">Zoni Bruno</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">C</h2>
+            <ul class="artists-list">
+                <li><a href="astrologo-claudio.html">Astrologo Claudio</a></li>
+                <li><a href="bergamasco-cortese-carla.html">Bergamasco Cortese Carla</a></li>
+                <li><a href="bodini-carlo.html">Bodini Carlo</a></li>
+                <li><a href="bondioli-bettinelli-carlo.html">Bondioli Bettinelli Carlo</a></li>
+                <li><a href="bonf-carlo.html">Bonfà Carlo</a></li>
+                <li><a href="carl-carlos.html">Carlé Carlos</a></li>
+                <li><a href="clementi-carla.html">Clementi Carla</a></li>
+                <li><a href="corazza-nino-corrado.html">Corazza Nino Corrado</a></li>
+                <li><a href="dalla-zorza-carlo.html">Dalla Zorza Carlo</a></li>
+                <li><a href="debbri-carlo.html">Debbri Carlo</a></li>
+                <li><a href="guaresi-costantino.html">Guaresi Costantino</a></li>
+                <li><a href="isoleri-cristiana.html">Isoleri Cristiana</a></li>
+                <li><a href="leoni-carlo.html">Leoni Carlo</a></li>
+                <li><a href="leperino-christian.html">Leperino Christian</a></li>
+                <li><a href="lezoche-claudio.html">Lezoche Claudio</a></li>
+                <li><a href="magnolato-cesco.html">Magnolato Cesco</a></li>
+                <li><a href="martinengo-claudio.html">Martinengo Claudio</a></li>
+                <li><a href="maugeri-concetto.html">Maugeri Concetto</a></li>
+                <li><a href="mo-carlo.html">Mo Carlo</a></li>
+                <li><a href="mocchiutti-cesare.html">Mocchiutti Cesare</a></li>
+                <li><a href="paolantonio-cesare.html">Paolantonio Cesare</a></li>
+                <li><a href="pescatori-carlo.html">Pescatori Carlo</a></li>
+                <li><a href="pozzati-concetto.html">Pozzati Concetto</a></li>
+                <li><a href="romei-claudio.html">Romei Claudio</a></li>
+                <li><a href="salemi-carmelo.html">Salemi Carmelo</a></li>
+                <li><a href="scarabelli-cesare.html">Scarabelli Cesare</a></li>
+                <li><a href="servino-carmine.html">Servino Carmine</a></li>
+                <li><a href="trevi-claudio.html">Trevi Claudio</a></li>
+                <li><a href="verna-claudio.html">Verna Claudio</a></li>
+                <li><a href="zanfrognini-carlo.html">Zanfrognini Carlo</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">D</h2>
+            <ul class="artists-list">
+                <li><a href="bec-daniel.html">Bec Daniel</a></li>
+                <li><a href="bellotti-dina.html">Bellotti Dina</a></li>
+                <li><a href="boschi-dino.html">Boschi Dino</a></li>
+                <li><a href="camurati-delfina.html">Camurati Delfina</a></li>
+                <li><a href="cantatore-domenico.html">Cantatore Domenico</a></li>
+                <li><a href="gambetti-dino.html">Gambetti Dino</a></li>
+                <li><a href="hirsch-debora.html">Hirsch Debora</a></li>
+                <li><a href="luise-brancaccio-diana.html">Luise Brancaccio Diana</a></li>
+                <li><a href="maurer-dora.html">Maurer Dora</a></li>
+                <li><a href="mme-duplok.html">Mme Duplok</a></li>
+                <li><a href="paolini-dino.html">Paolini Dino</a></li>
+                <li><a href="paolucci-giorgio-dario.html">Paolucci Giorgio Dario</a></li>
+                <li><a href="purificato-domenico.html">Purificato Domenico</a></li>
+                <li><a href="saiani-diego.html">Saiani Diego</a></li>
+                <li><a href="villani-dino.html">Villani Dino</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">E</h2>
+            <ul class="artists-list">
+                <li><a href="bioli-enzo.html">Bioli Enzo</a></li>
+                <li><a href="calabria-ennio.html">Calabria Ennio</a></li>
+                <li><a href="calvelli-ettore.html">Calvelli Ettore</a></li>
+                <li><a href="casabene-emilia.html">Casabene Emilia</a></li>
+                <li><a href="cattaneo-enrico.html">Cattaneo Enrico</a></li>
+                <li><a href="corradini-elio.html">Corradini Elio</a></li>
+                <li><a href="de-cillia-enrico.html">De Cillia Enrico</a></li>
+                <li><a href="fioravanti-ervardo.html">Fioravanti Ervardo</a></li>
+                <li><a href="fischer-eva.html">Fischer Eva</a></li>
+                <li><a href="gaudino-enrico.html">Gaudino Enrico</a></li>
+                <li><a href="greco-emilio.html">Greco Emilio</a></li>
+                <li><a href="habicher-eduard.html">Habicher Eduard</a></li>
+                <li><a href="job-enrico.html">Job Enrico</a></li>
+                <li><a href="lojero-ernesto.html">Lojero Ernesto</a></li>
+                <li><a href="malagutti-enos.html">Malagutti Enos</a></li>
+                <li><a href="marini-elena.html">Marini Elena</a></li>
+                <li><a href="poli-ebe.html">Poli Ebe</a></li>
+                <li><a href="priori-ercole.html">Priori Ercole</a></li>
+                <li><a href="quarti-marchi-ernesto.html">Quarti Marchiò Ernesto</a></li>
+                <li><a href="rondani-enzo.html">Rondani Enzo</a></li>
+                <li><a href="salvetti-ettore.html">Salvetti Ettore</a></li>
+                <li><a href="tadini-emilio.html">Tadini Emilio</a></li>
+                <li><a href="treccani-ernesto.html">Treccani Ernesto</a></li>
+                <li><a href="zobel-elise.html">Zobel Elise</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">F</h2>
+            <ul class="artists-list">
+                <li><a href="bodini-floriano.html">Bodini Floriano</a></li>
+                <li><a href="bolognesi-ferruccio.html">Bolognesi Ferruccio</a></li>
+                <li><a href="capisani-ferdinando.html">Capisani Ferdinando</a></li>
+                <li><a href="dugo-franco.html">Dugo Franco</a></li>
+                <li><a href="farulli-fernando.html">Farulli Fernando</a></li>
+                <li><a href="francese-franco.html">Francese Franco</a></li>
+                <li><a href="galli-federica.html">Galli Federica</a></li>
+                <li><a href="girosi-franco.html">Girosi Franco</a></li>
+                <li><a href="lui-franco.html">Lui Franco</a></li>
+                <li><a href="menolascina-franco.html">Menolascina Franco</a></li>
+                <li><a href="michielin-francesco.html">Michielin Francesco</a></li>
+                <li><a href="mizzoni-francensca.html">Mizzoni Francensca</a></li>
+                <li><a href="moneta-ferdinando.html">Moneta Ferdinando</a></li>
+                <li><a href="mulas-franco.html">Mulas Franco</a></li>
+                <li><a href="ricotta-fausto.html">Ricotta Fausto</a></li>
+                <li><a href="righi-federico.html">Righi Federico</a></li>
+                <li><a href="ruberti-francesco.html">Ruberti Francesco</a></li>
+                <li><a href="scaini-francesco.html">Scaini Francesco</a></li>
+                <li><a href="trombadori-francesco.html">Trombadori Francesco</a></li>
+                <li><a href="vimercati-franco.html">Vimercati Franco</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">G</h2>
+            <ul class="artists-list">
+                <li><a href="alic-giovanni.html">Alicò Giovanni</a></li>
+                <li><a href="bagnoli-giorgio.html">Bagnoli Giorgio</a></li>
+                <li><a href="barbieri-gianpaolo.html">Barbieri Gianpaolo</a></li>
+                <li><a href="barbisan-giovanni.html">Barbisan Giovanni</a></li>
+                <li><a href="basso-guido.html">Basso Guido</a></li>
+                <li><a href="bergomi-giuseppe.html">Bergomi Giuseppe</a></li>
+                <li><a href="bernardelli-giovanni.html">Bernardelli Giovanni</a></li>
+                <li><a href="bosi-giotto.html">Bosi Giotto</a></li>
+                <li><a href="botto-gianfranco.html">Botto Gianfranco</a></li>
+                <li><a href="caira-giulia.html">Caira Giulia</a></li>
+                <li><a href="calzetti-gabriele.html">Calzetti Gabriele</a></li>
+                <li><a href="cappelli-giovanni.html">Cappelli Giovanni</a></li>
+                <li><a href="carpintieri-giorgio.html">Carpintieri Giorgio</a></li>
+                <li><a href="carretti-gigliola.html">Carretti Gigliola</a></li>
+                <li><a href="casolaro-gea.html">Casolaro Gea</a></li>
+                <li><a href="cattabriga-galileo.html">Cattabriga Galileo</a></li>
+                <li><a href="cattani-giorgio.html">Cattani Giorgio</a></li>
+                <li><a href="cazzaniga-giancarlo.html">Cazzaniga Giancarlo</a></li>
+                <li><a href="celano-gianni.html">Celano Gianni</a></li>
+                <li><a href="ciangottini-giovanni.html">Ciangottini Giovanni</a></li>
+                <li><a href="colli-giancarlo.html">Colli Giancarlo</a></li>
+                <li><a href="colombo-gianni.html">Colombo Gianni</a></li>
+                <li><a href="consolazione-giovanni.html">Consolazione Giovanni</a></li>
+                <li><a href="consoli-giuseppe.html">Consoli Giuseppe</a></li>
+                <li><a href="cortelazzo-gino.html">Cortelazzo Gino</a></li>
+                <li><a href="crespi-legorino-gaetano.html">Crespi Legorino Gaetano</a></li>
+                <li><a href="de-lorenzo-giuseppe.html">De Lorenzo Giuseppe</a></li>
+                <li><a href="ferlisi-gianfranco.html">Ferlisi Gianfranco</a></li>
+                <li><a href="fioroni-giosetta.html">Fioroni Giosetta</a></li>
+                <li><a href="frabboni-natale-guido.html">Frabboni Natale Guido</a></li>
+                <li><a href="francesconi-giancarlo.html">Francesconi Giancarlo</a></li>
+                <li><a href="fumagalli-giovanni.html">Fumagalli Giovanni</a></li>
+                <li><a href="gasparini-giansisto.html">Gasparini Giansisto</a></li>
+                <li><a href="giliberti-giorgio.html">Giliberti Giorgio</a></li>
+                <li><a href="giovanola-gianluigi.html">Giovanola Gianluigi</a></li>
+                <li><a href="gorni-giuseppe.html">Gorni Giuseppe</a></li>
+                <li><a href="greci-giovanni.html">Greci Giovanni</a></li>
+                <li><a href="guarnieri-giorgio.html">Guarnieri Giorgio</a></li>
+                <li><a href="guida-gino.html">Guida Gino</a></li>
+                <li><a href="iliprandi-giancarlo.html">Iliprandi Giancarlo</a></li>
+                <li><a href="landini-giuseppe.html">Landini Giuseppe</a></li>
+                <li><a href="liusso-giuseppe.html">Liusso Giuseppe</a></li>
+                <li><a href="marini-giancarlo.html">Marini Giancarlo</a></li>
+                <li><a href="martinelli-giuseppe.html">Martinelli Giuseppe</a></li>
+                <li><a href="mattia-gianluigi.html">Mattia Gianluigi</a></li>
+                <li><a href="mazzullo-giuseppe.html">Mazzullo Giuseppe</a></li>
+                <li><a href="medici-giovanni.html">Medici Giovanni</a></li>
+                <li><a href="milesi-giuseppe.html">Milesi Giuseppe</a></li>
+                <li><a href="montanari-giuseppe.html">Montanari Giuseppe</a></li>
+                <li><a href="montorsi-giordano.html">Montorsi Giordano</a></li>
+                <li><a href="morandi-giuseppe.html">Morandi Giuseppe</a></li>
+                <li><a href="morbin-giovanni.html">Morbin Giovanni</a></li>
+                <li><a href="motti-giuseppe.html">Motti Giuseppe</a></li>
+                <li><a href="mucchi-gabriele.html">Mucchi Gabriele</a></li>
+                <li><a href="mundula-giovanni.html">Mundula Giovanni</a></li>
+                <li><a href="norese-giancarlo.html">Norese Giancarlo</a></li>
+                <li><a href="olivieri-giorgio.html">Olivieri Giorgio</a></li>
+                <li><a href="omiccioli-giovanni.html">Omiccioli Giovanni</a></li>
+                <li><a href="paganin-giovanni.html">Paganin Giovanni</a></li>
+                <li><a href="pardi-gianfranco.html">Pardi Gianfranco</a></li>
+                <li><a href="pauletti-gabriella.html">Pauletti Gabriella</a></li>
+                <li><a href="pini-giuliano.html">Pini Giuliano</a></li>
+                <li><a href="re-gilberto.html">Re Gilberto</a></li>
+                <li><a href="resmi-guido.html">Resmi Guido</a></li>
+                <li><a href="roma-gina.html">Roma Gina</a></li>
+                <li><a href="ruffini-giulio.html">Ruffini Giulio</a></li>
+                <li><a href="salvadori-giulio.html">Salvadori Giulio</a></li>
+                <li><a href="scaiola-giuseppe.html">Scaiola Giuseppe</a></li>
+                <li><a href="scalvini-giuseppe.html">Scalvini Giuseppe</a></li>
+                <li><a href="scaravelli-giordano.html">Scaravelli Giordano</a></li>
+                <li><a href="signori-gianfranco.html">Signori Gianfranco</a></li>
+                <li><a href="soccol-giovanni.html">Soccol Giovanni</a></li>
+                <li><a href="spadari-giangiacomo.html">Spadari Giangiacomo</a></li>
+                <li><a href="tampieri-giuseppe.html">Tampieri Giuseppe</a></li>
+                <li><a href="thusek-klaber-gina.html">Thusek Klaber Gina</a></li>
+                <li><a href="toccafondo-gianluigi.html">Toccafondo Gianluigi</a></li>
+                <li><a href="toffolo-giovanni.html">Toffolo Giovanni</a></li>
+                <li><a href="toninelli-gianni.html">Toninelli Gianni</a></li>
+                <li><a href="trentini-guido.html">Trentini Guido</a></li>
+                <li><a href="turcato-giulio.html">Turcato Giulio</a></li>
+                <li><a href="turci-giulio.html">Turci Giulio</a></li>
+                <li><a href="vangi-giuliano.html">Vangi Giuliano</a></li>
+                <li><a href="viviani-giuseppe.html">Viviani Giuseppe</a></li>
+                <li><a href="zigaina-giuseppe.html">Zigaina Giuseppe</a></li>
+                <li><a href="ziveri-guido.html">Ziveri Guido</a></li>
+                <li><a href="zorzi-giordano.html">Zorzi Giordano</a></li>
+                <li><a href="zucchini-giorgio.html">Zucchini Giorgio</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">H</h2>
+            <ul class="artists-list">
+                <li><a href="kyung-kim-hwal.html">Kyung Kim Hwal</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">I</h2>
+            <ul class="artists-list">
+                <li><a href="antico-italo.html">Antico Italo</a></li>
+                <li><a href="calvari-italo.html">Calvari Italo</a></li>
+                <li><a href="lecic-igor.html">Lecic Igor</a></li>
+                <li><a href="marpicati-iros.html">Marpicati Iros</a></li>
+                <li><a href="scaringi-ivo.html">Scaringi Ivo</a></li>
+                <li><a href="ugolini-zoli-irene.html">Ugolini Zoli Irene</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">J</h2>
+            <ul class="artists-list">
+                <li><a href="guaitamacchi-jonathan.html">Guaitamacchi Jonathan</a></li>
+                <li><a href="ibaez-jesus.html">Ibañez Jesus</a></li>
+                <li><a href="paz-julio.html">Paz Julio</a></li>
+                <li><a href="stretti-zamponi-jaromir.html">Stretti Zamponi Jaromir</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">K</h2>
+            <ul class="artists-list">
+                <li><a href="plattner-karl.html">Plattner Karl</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">L</h2>
+            <ul class="artists-list">
+                <li><a href="alessandrini-livia.html">Alessandrini Livia</a></li>
+                <li><a href="bartolini-luigi.html">Bartolini Luigi</a></li>
+                <li><a href="berzoini-lino.html">Berzoini Lino</a></li>
+                <li><a href="biffi-luigi.html">Biffi Luigi</a></li>
+                <li><a href="blotto-luciano.html">Blotto Luciano</a></li>
+                <li><a href="caldari-luciano.html">Caldari Luciano</a></li>
+                <li><a href="caldirola-maria-luisa.html">Caldirola Maria Luisa</a></li>
+                <li><a href="cobianco-luigi.html">Cobianco Luigi</a></li>
+                <li><a href="cottini-luciano.html">Cottini Luciano</a></li>
+                <li><a href="dallacqua-luciano.html">Dall'Acqua Luciano</a></li>
+                <li><a href="del-pezzo-lucio.html">Del Pezzo Lucio</a></li>
+                <li><a href="dragoni-luigi.html">Dragoni Luigi</a></li>
+                <li><a href="dudreville-leonardo.html">Dudreville Leonardo</a></li>
+                <li><a href="geri-loriano.html">Geri Loriano</a></li>
+                <li><a href="guerricchio-luigi.html">Guerricchio Luigi</a></li>
+                <li><a href="lazzarini-cesare-leonbruno.html">Lazzarini Cesare Leonbruno</a></li>
+                <li><a href="malta-liliana.html">Malta Liliana</a></li>
+                <li><a href="manfredi-lombardi.html">Manfredi Lombardi</a></li>
+                <li><a href="reggiani-liberio.html">Reggiani Liberio</a></li>
+                <li><a href="rosignano-livio.html">Rosignano Livio</a></li>
+                <li><a href="salvi-luigi.html">Salvi Luigi</a></li>
+                <li><a href="sotgiu-liana.html">Sotgiu Liana</a></li>
+                <li><a href="sotilis-lisa.html">Sotilis Lisa</a></li>
+                <li><a href="spacal-luigi.html">Spacal Luigi</a></li>
+                <li><a href="strazzabosco-luigi.html">Strazzabosco Luigi</a></li>
+                <li><a href="timoncini-luigi.html">Timoncini Luigi</a></li>
+                <li><a href="uggetti-maria-luisa.html">Uggetti Maria Luisa</a></li>
+                <li><a href="venna-landsmann-lucio.html">Venna Landsmann Lucio</a></li>
+                <li><a href="veronesi-luigi.html">Veronesi Luigi</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">M</h2>
+            <ul class="artists-list">
+                <li><a href="barbi-mario.html">Barbi Mario</a></li>
+                <li><a href="bardi-mario.html">Bardi Mario</a></li>
+                <li><a href="benedetti-mario.html">Benedetti Mario</a></li>
+                <li><a href="bondioli-marco.html">Bondioli Marco</a></li>
+                <li><a href="bonora-maurizio.html">Bonora Maurizio</a></li>
+                <li><a href="bottoni-maurizio.html">Bottoni Maurizio</a></li>
+                <li><a href="bucchi-massimo.html">Bucchi Massimo</a></li>
+                <li><a href="buzzi-mauro.html">Buzzi Mauro</a></li>
+                <li><a href="chianese-mario.html">Chianese Mario</a></li>
+                <li><a href="cimara-mario.html">Cimara Mario</a></li>
+                <li><a href="ciucci-mario.html">Ciucci Mario</a></li>
+                <li><a href="coccoli-anna-maria.html">Coccoli Anna Maria</a></li>
+                <li><a href="cosua-maurizio.html">Cosua Maurizio</a></li>
+                <li><a href="domp-maria.html">Dompè Maria</a></li>
+                <li><a href="fimiani-mariarosaria.html">Fimiani Mariarosaria</a></li>
+                <li><a href="gandini-marcolino.html">Gandini Marcolino</a></li>
+                <li><a href="gradi-marco.html">Gradi Marco</a></li>
+                <li><a href="gualerzi-mirko.html">Gualerzi Mirko</a></li>
+                <li><a href="magrini-marco.html">Magrini Marco</a></li>
+                <li><a href="mazzali-mauro.html">Mazzali Mauro</a></li>
+                <li><a href="mazzoleni-martino.html">Mazzoleni Martino</a></li>
+                <li><a href="molteni-mario.html">Molteni Mario</a></li>
+                <li><a href="montani-sigismondo-matteo.html">Montani Sigismondo Matteo</a></li>
+                <li><a href="nasr-moataz.html">Nasr Moataz</a></li>
+                <li><a href="pellicari-anna-maria.html">Pellicari Anna Maria</a></li>
+                <li><a href="petrus-marco.html">Petrus Marco</a></li>
+                <li><a href="pisani-massimo.html">Pisani Massimo</a></li>
+                <li><a href="pulini-massimo.html">Pulini Massimo</a></li>
+                <li><a href="raciti-mario.html">Raciti Mario</a></li>
+                <li><a href="rosi-mino.html">Rosi Mino</a></li>
+                <li><a href="rossello-mario.html">Rossello Mario</a></li>
+                <li><a href="rusconi-marisa.html">Rusconi Marisa</a></li>
+                <li><a href="sicchiero-maurizio.html">Sicchiero Maurizio</a></li>
+                <li><a href="sormani-marino.html">Sormani Marino</a></li>
+                <li><a href="staccioli-mauro.html">Staccioli Mauro</a></li>
+                <li><a href="venturi-marino.html">Venturi Marino</a></li>
+                <li><a href="zuppelli-massimo.html">Zuppelli Massimo</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">N</h2>
+            <ul class="artists-list">
+                <li><a href="carrino-nicola.html">Carrino Nicola</a></li>
+                <li><a href="coletti-nando.html">Coletti Nando</a></li>
+                <li><a href="crochet-nicolas.html">Crochet Nicolas</a></li>
+                <li><a href="crociani-nino.html">Crociani Nino</a></li>
+                <li><a href="dago-ousmane-ndiaye.html">Dago Ousmane Ndiaye</a></li>
+                <li><a href="donella-nelli.html">Donella Nelli</a></li>
+                <li><a href="khan-naiza.html">Khan Naiza</a></li>
+                <li><a href="leonardi-nello.html">Leonardi Nello</a></li>
+                <li><a href="mascellani-norma.html">Mascellani Norma</a></li>
+                <li><a href="massarotti-nelia.html">Massarotti Nelia</a></li>
+                <li><a href="orsatti-nemesio.html">Orsatti Nemesio</a></li>
+                <li><a href="petrolini-nicola.html">Petrolini Nicola</a></li>
+                <li><a href="sciavarello-nunzio.html">Sciavarello Nunzio</a></li>
+                <li><a href="strada-nino.html">Strada Nino</a></li>
+                <li><a href="zapparoli-noradino.html">Zapparoli Noradino</a></li>
+                <li><a href="zarian-nwarth.html">Zarian Nwarth</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">O</h2>
+            <ul class="artists-list">
+                <li><a href="di-prata-oscar.html">Di Prata Oscar</a></li>
+                <li><a href="ettorre-omero.html">Ettorre Omero</a></li>
+                <li><a href="giacomazzi-ottavio.html">Giacomazzi Ottavio</a></li>
+                <li><a href="pamici-odinea.html">Pamici Odinea</a></li>
+                <li><a href="silvani-orio.html">Silvani Orio</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">P</h2>
+            <ul class="artists-list">
+                <li><a href="angelani-paolo.html">Angelani Paolo</a></li>
+                <li><a href="bisio-pietro.html">Bisio Pietro</a></li>
+                <li><a href="bonora-paola.html">Bonora Paola</a></li>
+                <li><a href="cervi-piero.html">Cervi Piero</a></li>
+                <li><a href="di-giacomo-panfilo.html">Di Giacomo Panfilo</a></li>
+                <li><a href="dimi-pietro.html">Dimi Pietro</a></li>
+                <li><a href="formenti-primo.html">Formenti Primo</a></li>
+                <li><a href="frosecchi-paolo.html">Frosecchi Paolo</a></li>
+                <li><a href="ghizzardi-pietro.html">Ghizzardi Pietro</a></li>
+                <li><a href="giorgi-paolo.html">Giorgi Paolo</a></li>
+                <li><a href="grossi-proferio.html">Grossi Proferio</a></li>
+                <li><a href="guidolotti-pino.html">Guidolotti Pino</a></li>
+                <li><a href="leddi-piero.html">Leddi Piero</a></li>
+                <li><a href="lista-pietro.html">Lista Pietro</a></li>
+                <li><a href="llausas-pepa.html">Llausas Pepa</a></li>
+                <li><a href="marchiori-paola.html">Marchiori Paola</a></li>
+                <li><a href="martina-piero.html">Martina Piero</a></li>
+                <li><a href="parini-gian-paolo.html">Parini Gian Paolo</a></li>
+                <li><a href="pizzi-cannella-piero.html">Pizzi Cannella Piero</a></li>
+                <li><a href="plescan-pietro.html">Plescan Pietro</a></li>
+                <li><a href="ponti-pino.html">Ponti Pino</a></li>
+                <li><a href="reggiani-pino.html">Reggiani Pino</a></li>
+                <li><a href="ricci-paolo.html">Ricci Paolo</a></li>
+                <li><a href="sacchi-pino.html">Sacchi Pino</a></li>
+                <li><a href="thuile-paul.html">Thuile Paul</a></li>
+                <li><a href="tredici-piero.html">Tredici Piero</a></li>
+                <li><a href="zuccolin-pietro.html">Zuccolin Pietro</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">R</h2>
+            <ul class="artists-list">
+                <li><a href="aloi-roberto.html">Aloi Roberto</a></li>
+                <li><a href="birolli-renato.html">Birolli Renato</a></li>
+                <li><a href="brindisi-remo.html">Brindisi Remo</a></li>
+                <li><a href="bruno-roberta.html">Bruno Roberta</a></li>
+                <li><a href="dallasta-renzo.html">Dall'Asta Renzo</a></li>
+                <li><a href="de-angelis-rodolfo.html">De Angelis Rodolfo</a></li>
+                <li><a href="de-grada-raffaele.html">De Grada Raffaele</a></li>
+                <li><a href="emiliani-renzo.html">Emiliani Renzo</a></li>
+                <li><a href="ferreri-rosa.html">Ferreri Rosa</a></li>
+                <li><a href="ferri-rina.html">Ferri Rina</a></li>
+                <li><a href="gaibazzi-remo.html">Gaibazzi Remo</a></li>
+                <li><a href="galuppo-riccardo.html">Galuppo Riccardo</a></li>
+                <li><a href="giorgi-antonio-ruggero.html">Giorgi Antonio Ruggero</a></li>
+                <li><a href="guttuso-renato.html">Guttuso Renato</a></li>
+                <li><a href="hettner-rolando.html">Hettner Rolando</a></li>
+                <li><a href="jandolo-raffaele.html">Jandolo Raffaele</a></li>
+                <li><a href="lumaca-riccardo.html">Lumaca Riccardo</a></li>
+                <li><a href="minuto-renata.html">Minuto Renata</a></li>
+                <li><a href="notari-romano.html">Notari Romano</a></li>
+                <li><a href="pasetto-remo.html">Pasetto Remo</a></li>
+                <li><a href="pedrazzoli-roberto.html">Pedrazzoli Roberto</a></li>
+                <li><a href="roberti-roberto.html">Roberti Roberto</a></li>
+                <li><a href="schirolli-renzo.html">Schirolli Renzo</a></li>
+                <li><a href="scorzelli-raffaele.html">Scorzelli Raffaele</a></li>
+                <li><a href="tauber-riccardo.html">Tauber Riccardo</a></li>
+                <li><a href="tonino-rodolfo.html">Tonino Rodolfo</a></li>
+                <li><a href="vernizzi-renato.html">Vernizzi Renato</a></li>
+                <li><a href="vespignani-renzo.html">Vespignani Renzo</a></li>
+                <li><a href="wolf-remo.html">Wolf Remo</a></li>
+                <li><a href="zanchi-rachele.html">Zanchi Rachele</a></li>
+                <li><a href="zanutto-renzo.html">Zanutto Renzo</a></li>
+                <li><a href="zapparoli-rino.html">Zapparoli Rino</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">S</h2>
+            <ul class="artists-list">
+                <li><a href="altieri-sergio.html">Altieri Sergio</a></li>
+                <li><a href="benetton-simon.html">Benetton Simon</a></li>
+                <li><a href="beraldo-stefania.html">Beraldo Stefania</a></li>
+                <li><a href="cadelo-silvio.html">Cadelo Silvio</a></li>
+                <li><a href="canova-serena.html">Canova Serena</a></li>
+                <li><a href="chinni-silvano.html">Chinni Silvano</a></li>
+                <li><a href="costantini-sonia.html">Costantini Sonia</a></li>
+                <li><a href="gemignani-sineo.html">Gemignani Sineo</a></li>
+                <li><a href="gilardi-silvano.html">Gilardi Silvano</a></li>
+                <li><a href="girardello-silvano.html">Girardello Silvano</a></li>
+                <li><a href="luporini-sandro.html">Luporini Sandro</a></li>
+                <li><a href="milluzzo-sebestiano.html">Milluzzo Sebestiano</a></li>
+                <li><a href="mirabella-saro.html">Mirabella Saro</a></li>
+                <li><a href="monachesi-sante.html">Monachesi Sante</a></li>
+                <li><a href="navarra-silvio.html">Navarra Silvio</a></li>
+                <li><a href="polloni-silvio.html">Polloni Silvio</a></li>
+                <li><a href="pulcinelli-silvano.html">Pulcinelli Silvano</a></li>
+                <li><a href="ragalzi-sergio.html">Ragalzi Sergio</a></li>
+                <li><a href="rossi-sante.html">Rossi Sante</a></li>
+                <li><a href="sabbadini-selvino.html">Sabbadini Selvino</a></li>
+                <li><a href="sarri-sergio.html">Sarri Sergio</a></li>
+                <li><a href="scanu-sergio.html">Scanu Sergio</a></li>
+                <li><a href="sermidi-sergio.html">Sermidi Sergio</a></li>
+                <li><a href="tarquinio-sergio.html">Tarquinio Sergio</a></li>
+                <li><a href="tenconi-sandra.html">Tenconi Sandra</a></li>
+                <li><a href="tomboloni-sandra.html">Tomboloni Sandra</a></li>
+                <li><a href="zanni-sergio.html">Zanni Sergio</a></li>
+                <li><a href="zanutto-olgeni-sergio.html">Zanutto Olgeni Sergio</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">T</h2>
+            <ul class="artists-list">
+                <li><a href="bortolotti-timo.html">Bortolotti Timo</a></li>
+                <li><a href="fantini-tiziana.html">Fantini Tiziana</a></li>
+                <li><a href="gasperin-tullio.html">Gasperin Tullio</a></li>
+                <li><a href="lange-thomas.html">Lange Thomas</a></li>
+                <li><a href="longaretti-trento.html">Longaretti Trento</a></li>
+                <li><a href="mantovani-tiziana.html">Mantovani Tiziana</a></li>
+                <li><a href="marangoni-tranquillo.html">Marangoni Tranquillo</a></li>
+                <li><a href="maselli-titina.html">Maselli Titina</a></li>
+                <li><a href="scrofalo-teomondo.html">Scrofalo Teomondo</a></li>
+                <li><a href="vaglieri-taino.html">Vaglieri Taino</a></li>
+                <li><a href="vietri-tullio.html">Vietri Tullio</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">U</h2>
+            <ul class="artists-list">
+                <li><a href="attardi-ugo.html">Attardi Ugo</a></li>
+                <li><a href="castellani-ugo.html">Castellani Ugo</a></li>
+                <li><a href="cavenago-umberto.html">Cavenago Umberto</a></li>
+                <li><a href="faini-umberto.html">Faini Umberto</a></li>
+                <li><a href="folli-umberto.html">Folli Umberto</a></li>
+                <li><a href="maffi-ugo.html">Maffi Ugo</a></li>
+                <li><a href="mariotti-umberto.html">Mariotti Umberto</a></li>
+                <li><a href="sergi-ugo.html">Sergi Ugo</a></li>
+                <li><a href="valenza-ugo.html">Valenza Ugo</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">V</h2>
+            <ul class="artists-list">
+                <li><a href="bendini-vasco.html">Bendini Vasco</a></li>
+                <li><a href="bresciani-virio.html">Bresciani Virio</a></li>
+                <li><a href="cavicchioni-vittorio.html">Cavicchioni Vittorio</a></li>
+                <li><a href="ciardo-vincenzo.html">Ciardo Vincenzo</a></li>
+                <li><a href="ciminaghi-virginio.html">Ciminaghi Virginio</a></li>
+                <li><a href="daugusta-vittorio.html">D'Augusta Vittorio</a></li>
+                <li><a href="eulisse-vincenzo.html">Eulisse Vincenzo</a></li>
+                <li><a href="petrus-vitale.html">Petrus Vitale</a></li>
+                <li><a href="poli-vivaldo.html">Poli Vivaldo</a></li>
+                <li><a href="ponti-velda.html">Ponti Velda</a></li>
+                <li><a href="sivko-vaclav.html">Sivko Vaclav</a></li>
+                <li><a href="vagnetti-vieri.html">Vagnetti Vieri</a></li>
+                <li><a href="vago-valentino.html">Vago Valentino</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">W</h2>
+            <ul class="artists-list">
+                <li><a href="galli-walter.html">Galli Walter</a></li>
+                <li><a href="manzoni-wanda.html">Manzoni Wanda</a></li>
+                <li><a href="peretti-poggi-wolfango.html">Peretti Poggi Wolfango</a></li>
+                <li><a href="piacesi-walter.html">Piacesi Walter</a></li>
+                <li><a href="vaccari-wainer.html">Vaccari Wainer</a></li>
+                <li><a href="valentini-walter.html">Valentini Walter</a></li>
+            </ul>
+        </div>
+
+        <div class="letter-section">
+            <h2 class="letter-heading">X</h2>
+            <ul class="artists-list">
+                <li><a href="bueno-xavier.html">Bueno Xavier</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>Museo Galleria del Premio Suzzara</strong></p>
+            <p>Via Don Bosco 2/a - 46029 Suzzara (MN)</p>
+            <p>Tel. 0376 513513 | Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6c0b0d0000091e050d1c1e090105032c0f0301190209421f1916160d1e0d420102420518">[email&#160;protected]</a></p>
+            <p style="margi

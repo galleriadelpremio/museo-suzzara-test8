@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archivio Eventi | Museo Suzzara</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200;300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--red-primary:#E30513;--black:#1D1D1B;--grey-dark:#666;--grey-medium:#E0E0E0;--grey-light:#FAFAFA;--white:#FFF}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Work Sans',sans-serif;background:var(--white);color:var(--black);line-height:1.6}
+header{background:var(--white);border-bottom:1px solid var(--grey-medium);position:sticky;top:0;z-index:1000}
+.header-top{padding:20px 60px;border-bottom:1px solid var(--grey-light)}
+.logo-link{font-family:'Crimson Pro',serif;font-size:1.2rem;font-weight:600;color:var(--black);text-decoration:none}
+nav{background:var(--white)}
+nav ul{list-style:none;display:flex;justify-content:center;padding:0;margin:0;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--black);font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;font-weight:400;padding:20px 15px;display:block;transition:all 0.3s}
+nav a:hover,nav a.active{color:var(--red-primary);background:var(--grey-light)}
+.page-header{background:var(--black);color:var(--white);padding:80px 60px 60px;border-bottom:3px solid var(--red-primary)}
+.page-header-content{max-width:1400px;margin:0 auto}
+.breadcrumb{font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:20px}
+.breadcrumb a{color:rgba(255,255,255,0.6);text-decoration:none}
+.breadcrumb a:hover{color:var(--red-primary)}
+.breadcrumb span{margin:0 8px}
+.page-title{font-family:'Crimson Pro',serif;font-size:4rem;font-weight:300;letter-spacing:-2px;margin-bottom:15px}
+.page-subtitle{font-size:1.3rem;color:rgba(255,255,255,0.8);font-weight:300;max-width:900px;line-height:1.8}
+.container{max-width:1200px;margin:0 auto;padding:80px 60px}
+.content-section{margin-bottom:60px}
+.content-section h2{font-family:'Crimson Pro',serif;font-size:2.5rem;font-weight:600;margin-bottom:30px;color:var(--black)}
+.content-section p{font-size:1.1rem;line-height:1.9;color:var(--grey-dark);margin-bottom:20px}
+.info-box{background:var(--grey-light);border-left:6px solid var(--red-primary);padding:40px 50px;margin:40px 0}
+.info-box h3{font-family:'Crimson Pro',serif;font-size:1.8rem;font-weight:600;margin-bottom:20px}
+.info-box p{font-size:1.05rem;line-height:1.8;color:var(--grey-dark);margin-bottom:15px}
+footer{background:var(--black);color:var(--white);padding:60px 60px 30px;margin-top:100px}
+.footer-content{max-width:1400px;margin:0 auto;text-align:center}
+.footer-content p{font-size:0.9rem;color:rgba(255,255,255,0.7);margin:10px 0}
+@media(max-width:968px){.page-title{font-size:2.5rem}.container{padding:50px 30px}nav ul{flex-direction:column}}
+
+        
+
+        @media (max-width: 968px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+                z-index: 1000;
+                padding-top: 80px;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            nav a {
+                padding: 15px 20px;
+                border-bottom: 1px solid var(--grey-light);
+            }
+
+            .menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 999;
+            }
+
+            .menu-overlay.active {
+                display: block;
+            }
+        }
+    
+        /* Mobile Menu - Simple Vertical Stack */
+        @media (max-width: 968px) {
+            .header-top {
+                padding: 15px 30px;
+            }
+            
+            .logo-svg {
+                height: 40px;
+            }
+            
+            nav {
+                border-top: 1px solid var(--grey-medium);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 0;
+            }
+            
+            nav > ul > li {
+                border-bottom: 1px solid var(--grey-light);
+            }
+            
+            nav a {
+                padding: 14px 30px;
+                font-size: 0.8rem;
+            }
+            
+            nav > ul > li > a:hover {
+                background: var(--grey-light);
+            }
+            
+            /* Dropdown nascosto su mobile */
+            .dropdown-content {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<div class="header-top"><a href="../" class="logo-link">Museo Galleria del Premio Suzzara</a>
+            </div>
+<nav><ul>
+<li><a href="../museo/" >Museo</a></li>
+<li><a href="../premio/" >Premio</a></li>
+<li><a href="#" >Collezione</a></li>
+<li><a href="../mostre/" >Mostre</a></li>
+<li><a href="../eventi/" class='active'>Eventi</a></li>
+<li><a href="../edizionidelpremio/" >Edizioni</a></li>
+<li><a href="../visita/" >Visita</a></li>
+<li><a href="../didattica/" >Didattica</a></li>
+<li><a href="../contatti/" >Contatti</a></li>
+</ul></nav>
+</header>
+<div class="page-header">
+<div class="page-header-content">
+<div class="breadcrumb"><a href="../">Home</a><span>/</span><a href="../eventi/">Eventi</a><span>/</span><span>Archivio</span></div>
+<h1 class="page-title">Archivio Eventi</h1>
+<p class="page-subtitle">Gli eventi culturali organizzati dal museo negli anni</p>
+</div>
+</div>
+<div class="container"><div class="content-section"><h2>Eventi Passati</h2><p>Conferenze, presentazioni, concerti, laboratori e incontri con artisti.</p></div></div>
+<footer>
+<div class="footer-content">
+<p><strong>Museo Galleria del Premio Suzzara</strong></p>
+<p>Via Don Bosco 2/a - 46029 Suzzara (MN)</p>
+<p>Tel. 0376 513513 | Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3255535e5e57405b534240575f5b5d72515d5f475c571c414748485340531c5f5c1c5b46">[email&#160;protected]</a><
