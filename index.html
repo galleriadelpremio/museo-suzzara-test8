@@ -356,6 +356,8 @@
             gap: 0;
             margin: 60px 0;
             border: 1px solid var(--grey-medium);
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .stat-card {
@@ -613,7 +615,7 @@
             }
 
             .stats-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
             }
 
             .reviews-grid {
@@ -623,10 +625,6 @@
             .stat-card {
                 border-right: none;
                 border-bottom: 1px solid var(--grey-medium);
-            }
-
-            .stat-card:nth-child(odd) {
-                border-right: 1px solid var(--grey-medium);
             }
 
             .header-top {
