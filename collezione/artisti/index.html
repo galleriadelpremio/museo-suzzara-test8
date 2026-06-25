@@ -36,7 +36,11 @@
             z-index: 1000;
         }
         .header-top {
+            position: relative;
             padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid var(--grey-light);
         }
         .logo-svg {
@@ -347,6 +351,7 @@
                 <span></span>
             </button>
         </div>
+        <div class="menu-overlay"></div>
         <nav>
             <ul>
                 <li class="dropdown">
@@ -1058,5 +1063,31 @@
             <p>© 2026 Museo Galleria del Premio Suzzara | Via Don Bosco 2/a - 46029 Suzzara (MN) | Tel. 0376 513513</p>
         </div>
     </footer>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        const menuOverlay = document.querySelector('.menu-overlay');
+
+        function closeMenu() {
+            nav.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        });
+
+        menuOverlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('nav .dropdown > a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 968) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

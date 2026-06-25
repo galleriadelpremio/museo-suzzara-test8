@@ -523,7 +523,13 @@
                     <!-- Logo SVG content here -->
                 </svg>
             </a>
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+        <div class="menu-overlay"></div>
         <nav>
             <ul>
                 <li class="dropdown">
@@ -777,5 +783,31 @@
 
     <script>
         </script>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        const menuOverlay = document.querySelector('.menu-overlay');
+
+        function closeMenu() {
+            nav.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        });
+
+        menuOverlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('nav .dropdown > a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 968) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
