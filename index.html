@@ -418,16 +418,14 @@
         .card-image {
             width: 100%;
             height: 280px;
-            background: linear-gradient(135deg, var(--grey-light) 0%, var(--grey-medium) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--grey-dark);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
             position: relative;
             overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .card-image::before {
@@ -476,6 +474,50 @@
             color: var(--grey-dark);
             line-height: 1.6;
             margin-bottom: 20px;
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .review-card {
+            background: var(--white);
+            border: 1px solid var(--grey-medium);
+            padding: 30px;
+        }
+
+        .review-stars {
+            color: #FBBC04;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-size: 0.9rem;
+            color: var(--grey-dark);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .review-author {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .review-date {
+            font-size: 0.75rem;
+            color: var(--grey-dark);
+            margin-top: 4px;
+        }
+
+        .reviews-cta {
+            text-align: center;
         }
 
         /* CTA Section */
@@ -572,6 +614,10 @@
 
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
             }
 
             .stat-card {
@@ -766,6 +812,8 @@
     		<div class="hero-slide active" style="background-image: url('images/home-slideshow/homeslideshow01.jpg')"></div>
    			<div class="hero-slide" style="background-image: url('images/home-slideshow/homeslideshow02.jpg')"></div>
     		<div class="hero-slide" style="background-image: url('images/home-slideshow/homeslideshow03.jpg')"></div>
+    		<div class="hero-slide" style="background-image: url('images/home-slideshow/homeslideshow04.jpg')"></div>
+    		<div class="hero-slide" style="background-image: url('images/home-slideshow/homeslideshow05.jpg')"></div>
 		</div>
         
         <div class="hero-content">
@@ -783,10 +831,9 @@
         <div class="highlight-box">
             <h2>TERRA BRUCIATA</h2>
             <h3>L'arte nell'Antropocene</h3>
-            <p>Al via il 53° Premio Suzzara, uno dei più longevi e significativi concorsi d'arte contemporanea a livello nazionale. Un'edizione che riflette sull'impatto dell'uomo sull'ambiente e sul pianeta attraverso lo sguardo dell'arte contemporanea.</p>
+            <p>In corso il 53° Premio Suzzara. L'edizione 2026 riflette sull'impatto dell'uomo sull'ambiente e sul pianeta attraverso lo sguardo dell'arte contemporanea.</p>
             <div class="hero-buttons">
-                <a href="premio/in-corso.html" class="btn btn-primary">Partecipa al Premio</a>
-                <a href="premio/" class="btn btn-secondary">Scopri di più</a>
+                <a href="premio/in-corso.html" class="btn btn-secondary">Scopri di più</a>
             </div>
         </div>
     </div>
@@ -804,7 +851,7 @@
                 <div class="stat-label">Edizioni del Premio</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">800+</div>
+                <div class="stat-number">1500+</div>
                 <div class="stat-label">Opere in collezione</div>
             </div>
             <div class="stat-card">
@@ -822,36 +869,57 @@
             
             <div class="cards-grid">
                 <div class="card">
-                    <div class="card-image">[Immagine 800x560px]</div>
+                    <div class="card-image"><img src="images/in-evidenza/risultati-selezioni.jpg" alt="Risultati delle selezioni"></div>
                     <div class="card-content">
                         <div class="card-category">Premio</div>
-                        <h3 class="card-title">[Titolo News 1]</h3>
-                        <p class="card-subtitle">[Sottotitolo breve]</p>
-                        <p class="card-text">[Testo placeholder di tre righe circa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.]</p>
+                        <h3 class="card-title">Risultati delle selezioni</h3>
+                        <p class="card-subtitle">Gli artisti selezionati per il 53° Premio Suzzara</p>
+                        <p class="card-text">Scopri i nomi dei 76 artisti che sono stati selezionati per la mostra collettiva del 53° Premio Suzzara</p>
                         <a href="#" class="btn btn-secondary">Scopri di più</a>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-image">[Immagine 800x560px]</div>
+                    <div class="card-image"><img src="images/in-evidenza/sabati-in-galleria.jpg" alt="Sabati in Galleria"></div>
                     <div class="card-content">
-                        <div class="card-category">Mostra</div>
-                        <h3 class="card-title">[Titolo News 2]</h3>
-                        <p class="card-subtitle">[Sottotitolo breve]</p>
-                        <p class="card-text">[Testo placeholder di tre righe circa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.]</p>
-                        <a href="#" class="btn btn-secondary">Scopri di più</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-image">[Immagine 800x560px]</div>
-                    <div class="card-content">
-                        <div class="card-category">Evento</div>
-                        <h3 class="card-title">[Titolo News 3]</h3>
-                        <p class="card-subtitle">[Sottotitolo breve]</p>
-                        <p class="card-text">[Testo placeholder di tre righe circa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.]</p>
+                        <div class="card-category">Eventi</div>
+                        <h3 class="card-title">Sabati in Galleria</h3>
+                        <p class="card-subtitle">I sabati di giugno alle 15</p>
+                        <p class="card-text">Guido Reni, Henri de Toulouse-Lautrec e Marc Chagall</p>
                         <a href="#" class="btn btn-secondary">Scopri di più</a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Dicono di noi -->
+    <div class="container-narrow">
+        <h2 class="section-title">Dicono di noi</h2>
+        <p class="section-subtitle">Le recensioni dei nostri visitatori</p>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="review-text">The staff were extremely helpful and very knowledgeable and were a delight to talk to. Plus... a very interesting art gallery. Has temporary exhibitions but the permanent exhibition shows the development of the art prize from immediately post-war to now. Well worth a visit - a real gem.</p>
+                <div class="review-author">Chris Leeland</div>
+                <div class="review-date">Giugno 2026</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="review-text">A place to know more about the history of Suzzara, with a very lovely guided tour.</p>
+                <div class="review-author">Emily Chan</div>
+                <div class="review-date">Maggio 2026</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="review-text">Ho visitato con mia figlia questo spazio espositivo perché mi trovavo a Suzzara per altri motivi. Sono stata sorpresa dalla qualità delle opere e dell'allestimento. La Curatrice ci ha introdotte al percorso con una narrazione approfondita e coinvolgente, svelando le caratteristiche molto particolari di questo concorso. Ottima accoglienza. Ambiente privo di barriere architettoniche.</p>
+                <div class="review-author">Luisa Cristina Berti</div>
+                <div class="review-date">Maggio 2026</div>
+            </div>
+        </div>
+
+        <div class="reviews-cta">
+            <a href="https://g.page/r/CZaCMgehQPqxEAE/review" target="_blank" rel="noopener" class="btn btn-secondary">Scrivi una recensione</a>
         </div>
     </div>
 
@@ -870,7 +938,7 @@
             <div class="footer-section">
                 <h3>Museo Galleria del Premio Suzzara</h3>
                 <p>
-                    Il Museo Galleria del Premio Suzzara offre al pubblico un patrimonio di oltre ottocento opere acquisite nel corso di una storia iniziata nell'immediato dopoguerra, testimoniando l'evoluzione dell'arte italiana contemporanea dal neorealismo ad oggi.
+                    Il Museo Galleria del Premio Suzzara offre al pubblico un patrimonio di oltre millecinquecento opere acquisite nel corso di una storia iniziata nell'immediato dopoguerra, testimoniando l'evoluzione dell'arte italiana contemporanea dal neorealismo ad oggi. In più, dalla terza domenica di settembre alla fine dell'anno sono visibili le opere selezionate per il Premio in corso.
                 </p>
             </div>
             <div class="footer-section">

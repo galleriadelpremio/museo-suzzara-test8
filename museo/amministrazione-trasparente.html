@@ -11,7 +11,10 @@
 body{font-family:'Work Sans',sans-serif;background:var(--white);color:var(--black);line-height:1.6}
 header{background:var(--white);border-bottom:1px solid var(--grey-medium);position:sticky;top:0;z-index:1000}
 .header-top{padding:20px 60px;border-bottom:1px solid var(--grey-light)}
-.logo-link{font-family:'Crimson Pro',serif;font-size:1.2rem;font-weight:600;color:var(--black);text-decoration:none}
+.logo-svg {
+            height: 50px;
+            width: auto;
+        }
 nav{background:var(--white)}
 nav ul{list-style:none;display:flex;justify-content:center;padding:0;margin:0;flex-wrap:wrap}
 nav a{text-decoration:none;color:var(--black);font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;font-weight:400;padding:20px 15px;display:block;transition:all 0.3s}
@@ -127,7 +130,7 @@ footer{background:var(--black);color:var(--white);padding:60px 60px 30px;margin-
 </head>
 <body>
 <header>
-<div class="header-top"><a href="../" class="logo-link">Museo Galleria del Premio Suzzara</a>
+<div class="header-top"><a href="../"><img src="../images/logo.svg" alt="Museo Galleria del Premio Suzzara" class="logo-svg"></a>
             </div>
 <nav><ul>
 <li><a href="../museo/" class='active'>Museo</a></li>
