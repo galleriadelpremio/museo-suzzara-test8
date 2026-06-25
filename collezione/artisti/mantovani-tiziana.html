@@ -141,7 +141,9 @@
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
         }
         .footer-content p {
             font-size: 0.9rem;
@@ -239,6 +241,46 @@
                 display: block;
             }
         }
+
+        .footer-section h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--red-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
@@ -293,9 +335,44 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p><strong>Museo Galleria del Premio Suzzara</strong></p>
-            <p>Via Don Bosco 2/a - 46029 Suzzara (MN)</p>
-            <p>Tel. 0376 513513 | Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ef888e83838a9d868e9f9d8a828680af8c80829a818ac19c9a95958e9d8ec18281c1869b">[email&#160;protected]</a></p>
-            <p style="margi
+            <div class="footer-section">
+                <h3>Museo Galleria del Premio Suzzara</h3>
+                <p>
+                    Il Museo Galleria del Premio Suzzara offre al pubblico un patrimonio di oltre millecinquecento opere acquisite nel corso di una storia iniziata nell'immediato dopoguerra, testimoniando l'evoluzione dell'arte italiana contemporanea dal neorealismo ad oggi. In più, dalla terza domenica di settembre alla fine dell'anno sono visibili le opere selezionate per il Premio in corso.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Il Museo</h3>
+                <ul class="footer-links">
+                    <li><a href="../../museo/galleria-premio.html">Galleria del Premio</a></li>
+                    <li><a href="../../museo/staff.html">Staff</a></li>
+                    <li><a href="#">La Collezione</a></li>
+                    <li><a href="../../edizionidelpremio/">Pubblicazioni</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Il Premio</h3>
+                <ul class="footer-links">
+                    <li><a href="../../premio/">Cos’è il Premio</a></li>
+                    <li><a href="../../premio/in-corso.html">Edizione corrente</a></li>
+                    <li><a href="../../premio/archivio.html">Archivio edizioni</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Informazioni</h3>
+                <ul class="footer-links">
+                    <li><a href="../../visita/">Orari e biglietti</a></li>
+                    <li><a href="../../didattica/">Attività didattiche</a></li>
+                    <li><a href="../../contatti/">Contatti</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Museo Galleria del Premio Suzzara | Via Don Bosco 2/a - 46029 Suzzara (MN) | Tel. 0376 513513</p>
+        </div>
+    </footer>
+</body>
+</html>
